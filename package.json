@@ -1,0 +1,8 @@
+{
+  "name": "pilinponapona",
+  "scripts": {},
+  "dependencies": {
+    "twitter": "^1.7.1",
+    "twitter-text": "^3.0.1"
+  }
+}

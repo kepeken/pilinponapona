@@ -1,5 +1,6 @@
 const fs = require('fs');
 const util = require('util');
+const yaml = require('js-yaml');
 const twitter = require('twitter-text');
 
 const readFileAsync = util.promisify(fs.readFile);
@@ -10,7 +11,8 @@ const getTweets = async ({ account }) => {
   const directory = await readdirAsync(`./accounts/${account}/tweets/`);
   for (const file of directory) {
     const text = await readFileAsync(`./accounts/${account}/tweets/${file}`, { encoding: 'utf8' });
-    tweets.push(...text.replace(/\r\n/g, '\n').split('---').map(t => t.trim()));
+    const data = yaml.safeLoad(text);
+    tweets.push(...data);
   }
   return tweets;
 };

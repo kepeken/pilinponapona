@@ -2,6 +2,7 @@
   "name": "pilinponapona",
   "scripts": {},
   "dependencies": {
+    "js-yaml": "^3.13.1",
     "twitter": "^1.7.1",
     "twitter-text": "^3.0.1"
   }

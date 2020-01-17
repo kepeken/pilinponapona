@@ -2,7 +2,9 @@
   "name": "pilinponapona",
   "scripts": {},
   "dependencies": {
+    "dotenv": "^8.2.0",
     "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
     "twitter": "^1.7.1",
     "twitter-text": "^3.0.1"
   }

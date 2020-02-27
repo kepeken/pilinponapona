@@ -1,12 +1,13 @@
 {
   "name": "pilinponapona",
   "scripts": {
-    "start": "node index.js kirara_jbo"
+    "start": "node index.js run kirara_jbo"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
+    "node-cron": "^2.0.3",
     "simple-git": "^1.131.0",
     "twitter": "^1.7.1",
     "twitter-text": "^3.0.1"

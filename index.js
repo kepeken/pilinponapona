@@ -9,6 +9,7 @@ const yaml = require('js-yaml');
 const Twitter = require('twitter');
 const twitterText = require('twitter-text');
 const SimpleGit = require('simple-git/promise');
+const cron = require('node-cron');
 const { sample } = require('lodash');
 
 const readFileAsync = util.promisify(fs.readFile);
@@ -23,7 +24,7 @@ const checkUpdates = async () => {
   }
 };
 
-const run = async ({ account }) => {
+const runOnce = async ({ account }) => {
   await checkUpdates();
   const env = dotenv.parse(await readFileAsync(`./accounts/${account}/.env`));
   const twitter = new Twitter({
@@ -71,7 +72,12 @@ const stat = async ({ account }) => {
 (async () => {
   switch (process.argv[2]) {
     case 'run':
-      run({ account: process.argv[3] });
+      cron.schedule('* */6 * * *', () => {
+        runOnce({ account: process.argv[3] });
+      });
+      break;
+    case 'once':
+      runOnce({ account: process.argv[3] });
       break;
     case 'stat':
       stat({ account: process.argv[3] });

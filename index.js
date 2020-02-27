@@ -74,6 +74,8 @@ const stat = async ({ account }) => {
     case 'run':
       cron.schedule('0 */6 * * *', () => {
         runOnce({ account: process.argv[3] });
+      }, {
+        timezone: 'Asia/Tokyo'
       });
       break;
     case 'once':

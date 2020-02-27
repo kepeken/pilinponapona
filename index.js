@@ -72,7 +72,7 @@ const stat = async ({ account }) => {
 (async () => {
   switch (process.argv[2]) {
     case 'run':
-      cron.schedule('* */6 * * *', () => {
+      cron.schedule('0 */6 * * *', () => {
         runOnce({ account: process.argv[3] });
       });
       break;

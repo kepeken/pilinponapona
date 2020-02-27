@@ -8,12 +8,23 @@ const dotenv = require('dotenv');
 const yaml = require('js-yaml');
 const Twitter = require('twitter');
 const twitterText = require('twitter-text');
+const SimpleGit = require('simple-git/promise');
 const { sample } = require('lodash');
 
 const readFileAsync = util.promisify(fs.readFile);
 const readdirAsync = util.promisify(fs.readdir);
 
+const git = SimpleGit();
+
+const checkUpdates = async () => {
+  const result = await git.pull();
+  if (result.summary.changes) {
+    require('child_process').exec('npm restart');
+  }
+};
+
 const run = async ({ account }) => {
+  await checkUpdates();
   const env = dotenv.parse(await readFileAsync(`./accounts/${account}/.env`));
   const twitter = new Twitter({
     consumer_key: env.CONSUMER_KEY,

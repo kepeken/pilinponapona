@@ -28,7 +28,12 @@ const run = async ({ account }) => {
     const data = yaml.safeLoad(text);
     tweets.push(...data);
   }
-  console.log(sample(tweets));
+  const tweet = sample(tweets);
+  console.log(JSON.stringify(tweet));
+  const responce = await twitter.post('statuses/update', {
+    status: tweet,
+  });
+  console.log(`https://twitter.com/${account}/status/${responce.id_str}`);
 };
 
 const stat = async ({ account }) => {

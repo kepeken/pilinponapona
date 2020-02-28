@@ -2,6 +2,10 @@
 //   node . run ${screen_name}
 //   node . stat ${screen_name}
 
+process.on('unhandledRejection', (error) => {
+  console.error(error);
+});
+
 const fs = require('fs');
 const util = require('util');
 const dotenv = require('dotenv');

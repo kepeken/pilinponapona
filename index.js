@@ -24,7 +24,7 @@ const git = SimpleGit();
 const checkUpdates = async () => {
   const result = await git.pull();
   if (result.summary.changes) {
-    require('child_process').exec('npm restart');
+    console.log(result);
   }
 };
 

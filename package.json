@@ -8,7 +8,7 @@
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.19",
     "node-cron": "^2.0.3",
-    "simple-git": "^1.131.0",
+    "simple-git": "^3.16.0",
     "twitter": "^1.7.1",
     "twitter-text": "^3.0.1"
   }
